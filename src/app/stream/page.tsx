@@ -5,12 +5,13 @@ export default function Home() {
   const post = async () => {
     setResponse((r) => {
       return "Please wait retrieving response ..."
-    })
-    console.log(`message ${JSON.stringify(message)}`);
-    const response = await fetch(`http://localhost:8080/chat?question=${message}`);
-    const content = await response.text();
-    setResponse(content);
-    console.log(content);
+    });
+    let eventsrc = new EventSource(`http://localhost:8080/chatstream?question=${message}`);
+    setResponse('');
+    eventsrc.onmessage = (msg) => {
+      setResponse((response) => response + ' ' + msg.data);
+      console.log(response);
+    }
   }
 
   const updateValue = (e: any) => {
