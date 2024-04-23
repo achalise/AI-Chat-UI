@@ -6,7 +6,6 @@ export default function Home() {
     setResponse((r) => {
       return "Please wait retrieving response ..."
     })
-    console.log(`message ${JSON.stringify(message)}`);
     const response = await fetch(`http://localhost:8080/chat?question=${message}`);
     const content = await response.text();
     setResponse(content);
