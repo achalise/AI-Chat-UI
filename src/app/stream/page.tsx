@@ -23,6 +23,12 @@ export default function Home() {
     <div className="container">
       <div className="mb-1">
         <label  className="form-label">Question</label>
+        <input type="text" className="form-control" id="fileUploadControl" placeholder="Upload documents .." 
+           value={message} onChange={ updateValue }/>
+        <button type="button" className="btn btn-dark mt-3 mb-3" onClick={post}>Submit</button>
+      </div>
+      <div className="mb-1">
+        <label  className="form-label">Question</label>
         <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Type your question .." 
            value={message} onChange={ updateValue }/>
         <button type="button" className="btn btn-dark mt-3 mb-3" onClick={post}>Submit</button>
